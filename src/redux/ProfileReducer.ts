@@ -106,12 +106,13 @@ const
             stateCopy.newPostText = action.newText;
             return stateCopy;
         }
-        case  'SET-USERS-PROFILE': {
-            return {...state, profile: action.profile}
-        }
         case  'SET-STATUS': {
             return {...state, status: action.status}
         }
+        case  'SET-USERS-PROFILE': {
+            return {...state, profile: action.profile}
+        }
+        
         default :
             return state;
     }
