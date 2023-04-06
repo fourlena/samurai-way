@@ -19,17 +19,17 @@ export const  userApi ={
         return instanse.delete(`follow/${id}` )
             .then(response => response.data)
     },
-    getProfile (userId:string){
+    getProfile (userId:number){
         console.warn('Use profileApi')
         return profileApi.getProfile(userId)
     }
 }
 export const  profileApi ={
-    getProfile (userId:string){
+    getProfile (userId:number){
         return instanse.get(`profile/` + userId )
             .then(response => response.data)
     },
-    getStatus (userId:string){
+    getStatus (userId:number){
         return instanse.get(`profile/status/` + userId )
             .then(response => response.data)
     },

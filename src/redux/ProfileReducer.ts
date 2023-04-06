@@ -54,14 +54,14 @@ export let SetStatusAC = (status: string):SetStatusActionType => {
     return {type: 'SET-STATUS', status}
 }
 
-export const getUsersProfileTC = (userId:string) => {
+export const getUsersProfileTC = (userId:number) => {
     return (dispatch: Dispatch)=> {
         userApi.getProfile(userId).then(data => {
             dispatch(SetUsersProfileAC(data))
         })
     }
 }
-export const getStatusTC = (userId:string) => {
+export const getStatusTC = (userId:number) => {
     return (dispatch: Dispatch)=> {
         profileApi.getStatus(userId).then(data => {
             dispatch(SetStatusAC(data))
@@ -70,8 +70,8 @@ export const getStatusTC = (userId:string) => {
 }
 export const updateStatusTC = (status:string) => {
     return (dispatch: Dispatch)=> {
-        profileApi.updateStatus(status).then(response => {
-            if(response.data.resultCode === 0){
+        profileApi.updateStatus(status).then(data => {
+            if(data.resultCode === 0){
                 dispatch(SetStatusAC(status))
             }
         })

@@ -40,14 +40,14 @@ export type mapStateToPropsType={
     status:string
 }
 type mapDispatchToPropsType={
-    getUsersProfile: (userId:string)=>void
-    getStatus: (userId:string)=>void
+    getUsersProfile: (userId:number)=>void
+    getStatus: (userId:number)=>void
     updateStatus:(status:string)=>void
 }
 export type ProfilePagePropsType = RouteComponentProps<PathParamType> & OwnPagePropsType
 export type OwnPagePropsType = mapStateToPropsType & mapDispatchToPropsType
 type PathParamType ={
-    userId:string
+    userId:number
     isAuth:boolean
 }
 
