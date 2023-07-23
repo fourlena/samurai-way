@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {ProfileDataType, SetUsersProfileAC} from "../../redux/ProfileReducer";
-import {SetAuthUserDataAC, setUsersProfileTC} from "../../redux/AuthReducer";
+import {SetAuthUserDataAC, SetUsersProfileTC} from "../../redux/AuthReducer";
 import {AppRootStateType} from "../../redux/redux-store";
 import Header from "./Header";
 import {authApi} from "../../api/api";
@@ -39,5 +39,5 @@ let mapStateToPropsType = (state:AppRootStateType):mapStateToPropsType=>({
 })
 
 export default connect(mapStateToPropsType,{
-    setAuthUserData: setUsersProfileTC
+    setAuthUserData: SetUsersProfileTC
 }) (HeaderContainer);

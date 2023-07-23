@@ -2,6 +2,7 @@ import {MainActionType} from "./store";
 import {Dispatch} from "redux";
 import {authApi} from "../api/api";
 import {SetUsersProfileAC} from "./ProfileReducer";
+import {FormDataType} from "../components/Login/Login";
 
 export  type AuthReducerType = DataUserType & {isAuth: boolean}
 type DataUserType ={
@@ -19,7 +20,7 @@ export let SetAuthUserDataAC = (userId: number | null,email : string | null,logi
     return {type: 'SET-AUTH-USER-DATA', data:{userId,email,login}}
 }
 
-export const setUsersProfileTC = () => {
+export const SetUsersProfileTC = () => {
     return (dispatch: Dispatch)=> {
         authApi.me().then(data => {
             if(data.resultCode === 0){
@@ -29,6 +30,16 @@ export const setUsersProfileTC = () => {
         })
     }
 }
+export const LoginTC = (email:string, password:string, rememberMe:boolean) => {
+    return (dispatch: Dispatch)=> {
+        authApi.login(email,password,rememberMe).then(data => {
+            if(data.resultCode === 0){
+                dispatch(SetUsersProfileTC())
+            }
+        })
+    }
+}
+
 
 let initialState: AuthReducerType = {
     userId:null,
@@ -45,7 +56,6 @@ const authReducer = (state: AuthReducerType = initialState, action: MainActionTy
             ...action.data,
             isAuth:true
         }
-
         default :
             return state;
     }
